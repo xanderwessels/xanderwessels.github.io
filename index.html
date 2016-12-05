@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Reddit Gallery</title>
+
+    <script src="http://j.mp/jqymin"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+
+    <body>
+    <div id="images">
+    </div>
+
+        <div class="container">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img0" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img1" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img2" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img3" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img4" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img5" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img6" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div id="img7" class="hovereffect">
+                    <div class="overlay">
+                        <h2>Effect 12</h2>
+                        <p>
+                            <a href="#">LINK HERE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function replaceAll(str, find, replace) {
+                return str.replace(new RegExp(find, 'g'), replace);
+            }
+
+            var images = [];
+            $.getJSON("http://www.reddit.com/r/ArchitecturePorn/.json?jsonp=?", function(data) {
+                $.each(data.data.children.slice(0,8), function(i,item){
+                    var str1 = replaceAll(item.data.url, "&amp;", "&")
+                    if (str1.search(".jpg") < 0){ str1 = str1 + ".jpg";}
+                    if (item.data.domain == "flickr.com"){str1 = "http://placehold.it/300x200"}
+                    images.push(str1);
+                    console.log(str1,i);
+                    console.log(item.data)
+                    $("<img/>").attr("class", "img-responsive").attr("src", str1).appendTo("#img" + i);
+                });
+            })
+                .success(function() {console.log(images);});
+        </script>
+    </body>
+
+</html>
