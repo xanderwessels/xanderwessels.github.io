@@ -107,7 +107,7 @@
             }
 
             var images = [];
-            $.getJSON("http://www.reddit.com/r/ArchitecturePorn/.json?jsonp=?", function(data) {
+            $.getJSON("https://www.reddit.com/r/ArchitecturePorn/.json?jsonp=?", function(data) {
                 $.each(data.data.children.slice(0,8), function(i,item){
                     var str1 = replaceAll(item.data.url, "&amp;", "&")
                     if (str1.search(".jpg") < 0){ str1 = str1 + ".jpg";}
@@ -118,7 +118,6 @@
                     $("<img/>").attr("class", "img-responsive").attr("src", str1).appendTo("#img" + i);
                 });
             })
-                .success(function() {console.log(images);});
         </script>
     </body>
 
