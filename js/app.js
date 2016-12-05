@@ -1,4 +1,5 @@
 var images = [];
+var success = true;
 
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
@@ -24,17 +25,16 @@ function loadImages(subreddit) {
         console.log(data);
     })
         .done(function() { console.log('getJSON request succeeded!'); })
-        .fail(function(jqXHR, textStatus, errorThrown) { console.log('getJSON request failed! ' + textStatus); })
+        .fail(function(jqXHR, textStatus, errorThrown) { console.log('getJSON request failed! ' + textStatus); success = false; })
         .always(function() { console.log('getJSON request ended!'); });
 }
 $("form").submit(function( event ) {
-    if ($("input:first").val() === "correct" ) {
-        $( "span" ).text( "Validated..." ).show();
-        return;
+    loadImages($("input:first").val());
+    if (success = false){
+        alert("fail");
     }
-
-    $( "span" ).text( "Not valid!" ).show().fadeOut( 1000 );
     event.preventDefault();
 });
 
-loadImages("Earthporn");
+
+loadImages("earthporn");
