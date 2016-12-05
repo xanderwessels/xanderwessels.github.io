@@ -16,11 +16,11 @@ function loadImages(subreddit) {
             console.log(str1,i);
             console.log(item.data)
             var $image =  $("#img" + i);
-            $("<img/>").attr("class", "img-responsive").attr("src", str1).appendTo($image);
+            $("#img" + i).attr("src", str1)
 
             var title = replaceAll(item.data.title,/\[.*\]/,"")
-            $($image).find("h2").text(title);
-            $($image).find("a").attr("href", item.data.url).text("Click here to enlarge");
+            $($image).siblings().find("h2").text(title);
+            $($image).siblings().find("a").attr("href", item.data.url).text("Click here to enlarge");
         })
         console.log(data);
     })
@@ -30,9 +30,7 @@ function loadImages(subreddit) {
 }
 $("form").submit(function( event ) {
     loadImages($("input:first").val());
-    if (success = false){
-        alert("fail");
-    }
+
     event.preventDefault();
 });
 
