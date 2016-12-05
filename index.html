@@ -15,6 +15,19 @@
 </head>
 
     <body>
+        <nav class="navbar navbar-toolbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search for subreddit">
+                        </div>
+                        <button type="submit" class="btn btn-default" id="searchButton">Submit</button>
+                    </form>
+                </div>
+                <span></span>
+            </div>
+        </nav>
         <div class="container-fluid">
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div id="img0" class="hovereffect">
@@ -97,35 +110,8 @@
                 </div>
             </div>
         </div>
-        <div class = container-fluid>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-            </div>
-        </div>
-
-        <script>
-            function replaceAll(str, find, replace) {
-                return str.replace(new RegExp(find, 'g'), replace);
-            }
-
-            var images = [];
-            $.getJSON("https://www.reddit.com/r/ArchitecturePorn/.json?jsonp=?", function(data) {
-                $.each(data.data.children.slice(0,8), function(i,item){
-                    var str1 = replaceAll(item.data.url, "&amp;", "&")
-                    if (str1.search(".jpg") < 0){ str1 = str1 + ".jpg";}
-                    if (item.data.domain == "flickr.com"){str1 = "placeholder.png"}
-                    images.push(str1);
-                    console.log(str1,i);
-                    console.log(item.data)
-                    var $image =  $("#img" + i);
-                    $("<img/>").attr("class", "img-responsive").attr("src", str1).appendTo($image);
-
-                    var title = replaceAll(item.data.title,/\[.*\]/,"")
-                    $($image).find("h2").text(title);
-                    $($image).find("a").attr("href", item.data.url);
-                });
-            })
-        </script>
+    <script src="js/app.js"></script>
     </body>
 
 </html>
