@@ -2,11 +2,6 @@ body{
     background-color: black;
 }
 
-img {
-    max-width: 300px;
-    max-height: 200px;
-}
-
 .hovereffect {
     width: 100%;
     height: 100%;
@@ -16,6 +11,8 @@ img {
     text-align: center;
     cursor: default;
     background: #42b078;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .hovereffect .overlay {
@@ -94,3 +91,9 @@ img {
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
 }
+
+img {
+    width: 800px;
+    height: 400px;
+    object-fit: cover;
+}​
