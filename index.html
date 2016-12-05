@@ -117,7 +117,10 @@
                     images.push(str1);
                     console.log(str1,i);
                     console.log(item.data)
-                    $("<img/>").attr("class", "img-responsive").attr("src", str1).appendTo("#img" + i);
+                    var $image =  $("#img" + i);
+                    $("<img/>").attr("class", "img-responsive").attr("src", str1).appendTo($image);
+                    $($image).find("h2").text(item.data.title);
+                    $($image).find("a").attr("href", item.data.url);
                 });
             })
         </script>
