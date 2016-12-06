@@ -21,6 +21,7 @@ function loadImages(subreddit) {
                 $image.attr("src", str1);
 
                 var title = replaceAll(item.data.title, /\[.*\]/, "");
+                title = replaceAll(item.data.url, "&amp;", "&");
                 $($image).siblings().find("h2").text(title);
                 $($image).siblings().find("a").attr("href", item.data.url).text("Click here to enlarge");
                 count++;
