@@ -46,5 +46,9 @@ $("form").submit(function( event ) {
     event.preventDefault();
 });
 
+$('.dropdown-item').click(function () {
+   loadImages(this.text);
+});
+
 
 loadImages("pics");

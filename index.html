@@ -30,8 +30,19 @@
 </div>
 
 <div class="container-fluid">
-    <nav class="navbar navbar-light bg-faded">
-        <a class="navbar-brand" href="#">Reddit Gallery</a>
+    <nav class="navbar navbar-full navbar-light bg-faded">
+        <a class="navbar-brand mb-0" href="#">Reddit Gallery</a>
+
+        <ul class="nav navbar-nav ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Example subreddits</a>
+                <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+                    <a class="dropdown-item" href="#">Earthporn</a>
+                    <a class="dropdown-item" href="#">Architectureporn</a>
+                    <a class="dropdown-item" href="#">Machineporn</a>
+                </div>
+            </li>
+        </ul>
         <form class="form-inline float-xs-right">
             <input class="form-control" type="text" placeholder="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
