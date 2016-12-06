@@ -11,9 +11,12 @@ function loadImages(subreddit) {
         $.each(data.data.children.slice(0,16), function(i,item){
             if(item.data.post_hint == "image" && item.data.domain != "flickr.com"){
                 var str1 = replaceAll(item.data.url, "&amp;", "&");
-                if (str1.search(".jpg") < 0) {
-                    str1 = str1 + ".jpg";
+                if(str1.search("imgur") > 0 && str1.search(".jpg") > 0) {
+                    str1 = replaceAll(str1,".jpg", "l.jpg");
+                } else if (str1.search(".jpg") < 0) {
+                        str1 = str1 + ".jpg";
                 }
+
                 images.push(str1);
                 //console.log(str1,i);
                 //console.log(item.data)
@@ -21,7 +24,6 @@ function loadImages(subreddit) {
                 $image.attr("src", str1);
 
                 var title = replaceAll(item.data.title, /\[.*\]/, "");
-                title = replaceAll(item.data.url, "&amp;", "&");
                 $($image).siblings().find("h2").text(title);
                 $($image).siblings().find("a").attr("href", item.data.url).text("Click here to enlarge");
                 count++;
